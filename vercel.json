@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "buildCommand": "",
+  "outputDirectory": ".",
+  "rewrites": [
+    { "source": "/", "destination": "/SnackShack.html" },
+    { "source": "/staff", "destination": "/SnackShack.html" },
+    { "source": "/customer", "destination": "/CustomerView.html" }
+  ]
+}

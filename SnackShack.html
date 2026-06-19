@@ -384,12 +384,12 @@ const CM={};CARDS.forEach(c=>CM[c.id]=c);
 
 let custs=[],audit=[],cs={},editId=null,qrCur=null,fb=false,curCustId=null,sdConfig=null;
 let addCardStep={};
-const BASE="https://lambent-quokka-302849.netlify.app";
+const BASE="https://customer-loyalty-app-peach.vercel.app";
 const YR=365*86400000,WN=30*86400000,CR=7*86400000;
 const ss=s=>{const r=s.e+YR-Date.now();return r<=0?"x":r<=CR?"c":r<=WN?"w":"ok";};
 const dl=s=>Math.ceil((s.e+YR-Date.now())/86400000);
 const act=a=>a.filter(s=>ss(s)!=="x");
-const isBd=b=>{if(!b)return false;const p=b.split("/");if(p.length!==3)return false;const n=new Date(),d=new Date(`${p[2]}-${p[1]}-${p[0]}`);return d.getMonth()===n.getMonth()&&d.getDate()===n.getDate();};
+const isBd=b=>{if(!b)return false;const p=b.split("/");if(p.length!==3)return false;const n=new Date();return Number(p[1])-1===n.getMonth()&&Number(p[0])===n.getDate();};
 function fmtBday(el){let v=el.value.replace(/\D/g,"");if(v.length>2)v=v.slice(0,2)+"/"+v.slice(2);if(v.length>5)v=v.slice(0,5)+"/"+v.slice(5);el.value=v.slice(0,10);}
 function calcStreak(c){if(!c.visits||c.visits.length<2)return 0;const s=[...c.visits].sort((a,b)=>b-a);let str=1;for(let i=1;i<s.length;i++){if(s[i-1]-s[i]>=0.5&&s[i-1]-s[i]<=1.5)str++;else break;}return str;}
 function isVIP(c){return(c.totalRedeemed||0)>=5;}
